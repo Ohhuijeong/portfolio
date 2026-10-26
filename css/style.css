@@ -510,21 +510,23 @@ header .gnb::before {
 .project-feature .project-detail {
     width: 800px;
     height: 630px;
-    background: var(--color-accent);
     transform: translateX(-5px);
-    border-radius: 10px;
     z-index: 10;
-    overflow: hidden;
     margin-right: 20px;
 }
 
 .project-detail__item {
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     background: var(--color-accent);
     padding: 30px;
+    border-radius: 10px;
+}
+
+.project-detail__item.active {
+    display: flex;
 }
 
 .project-detail__image {
@@ -595,6 +597,15 @@ header .gnb::before {
     background: var(--color-accent);
 }
 
+.project-list .project-list__item.active {
+    background: var(--color-offWhite);
+}
+
+.project-list__item.active .project-list__type,
+.project-list__item.active .project-list__title {
+    color: var(--color-accent);
+}
+
 .project-list__item .text-area {
     color: var(--color-offWhite);
     font-family: var(--font-main);
@@ -623,4 +634,77 @@ header .gnb::before {
 .project-list__image img {
     width: 100%;
     height: 100%;
+}
+
+.contact {
+    background: url(../img/contact_background.png) no-repeat center/cover;
+    display: flex;
+    align-items: center;
+}
+
+.contact .inner {
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.contact h2 {
+    position: relative;
+    display: flex;
+    height: 155px;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.contact h2 .contact-bg-title {
+    position: absolute;
+    color: var(--color-backgroundWhite);
+    top: 0;
+}
+
+.contact h2 .contact-title {
+    z-index: 10;
+}
+
+.contact .contact-desc {
+    font-size: 22px;
+}
+
+.contact-area {
+    display: flex;
+    gap: 50px;
+}
+
+.contact-area button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100px;
+    color: var(--color-primary);
+    font-size: 20px;
+    font-family: var(--font-main);
+}
+
+.contact-area button img {
+    width: 50px;
+    height: 50px;
+}
+
+.contact-area span {
+    width: 1px;
+    height: 100px;
+    background: var(--color-primary);
+}
+
+.contact .profile-image {
+    position: absolute;
+    width: 480px;
+    height: 600px;
+    bottom: 0;
+    right: 0;
+    background: #fff;
 }

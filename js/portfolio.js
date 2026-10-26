@@ -150,3 +150,30 @@ var swiper = new Swiper('.infoSwiper', {
     prevEl: '.swiper-button-prev',
   },
 });
+
+/* project */
+const projectItems = document.querySelectorAll('.project-list__item');
+const projectDetails = document.querySelectorAll('.project-detail__item');
+
+// 프로젝트 목록 클릭 이벤트
+projectItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const projectName = item.dataset.project;
+
+    // 프로젝트 목록 active 변경
+    projectItems.forEach((el) => {
+      el.classList.remove('active');
+    });
+
+    item.classList.add('active');
+
+    // 프로젝트 상세 정보 active 변경
+    projectDetails.forEach((detail) => {
+      detail.classList.remove('active');
+
+      if (detail.dataset.project === projectName) {
+        detail.classList.add('active');
+      }
+    });
+  });
+});
