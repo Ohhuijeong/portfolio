@@ -29,14 +29,14 @@
             </div>
         </header>
 
-        <section class="intro" id="intro">
+        <section class="intro" id="main" data-section="main">
             <h1 class="typing">
                 <span id="typingText"></span>
                 <span class="cursor"></span>
             </h1>
         </section>
 
-        <section class="about about-top">
+        <section class="about about-top" id="aboutMe" data-section="aboutMe">
             <div class="inner">
                 <div class="about-intro">
                     <h2 class="about-title">
@@ -177,7 +177,7 @@
             </div>
         </section>
 
-        <section class="about about-bottom light-section">
+        <section class="about about-bottom light-section" data-section="aboutMe">
             <div class="inner">
                 <div class="about-intro">
                     <h2 class="about-title">
@@ -279,7 +279,7 @@
             </div>
         </section>
 
-        <section class="project">
+        <section class="project" id="projects" data-section="projects">
             <div class="inner">
                 <div class="project-feature">
                     <h2>
@@ -297,13 +297,10 @@
                                     MOONYZ
                                 </p>
                                 <p class="project-detail__desc">
-                                    오리지널 캐릭터 IP를 기반으로 브랜드 소개부터 협업 콘텐츠, 굿즈까지 다양한 브랜드 경험을 제공하는 웹사이트입니다.
+                                    브랜드 소개, 협업 콘텐츠, 굿즈 등 다양한 브랜드 경험을 제공하는 오리지널 캐릭터 IP 기반 웹사이트
                                 </p>
                             </div>
                             <div class="project-detail__link">
-                                <button type="button">
-                                    사용 스킬 보기
-                                </button>
                                 <button type="button">
                                     Git Hub
                                     <img src="img/ico_link.png" alt="">
@@ -327,13 +324,10 @@
                                 <p class="project-detail__desc">
                                     개인정보 유출 예방 및 안전한 디지털 생활을 돕기 위한 개인정보 보호
                                     캠페인
-                                    웹사이트입니다.
+                                    웹사이트
                                 </p>
                             </div>
                             <div class="project-detail__link">
-                                <button type="button">
-                                    사용 스킬
-                                    <img src="img/ico_link.png" alt="">
                                 </button>
                                 <button type="button">
                                     Git Hub
@@ -356,20 +350,12 @@
                                     TOONBOX
                                 </p>
                                 <p class="project-detail__desc">
-                                    다양한 웹툰을 쉽고 편리하게 탐색할 수 있도록 인기 작품과 장르별·요일별 콘텐츠를 구성한 웹툰 플랫폼입니다.
+                                    다양한 웹툰을 쉽고 편리하게 탐색할 수 있도록 인기 작품과 장르별·요일별 콘텐츠를 구성한 웹툰 플랫폼
                                 </p>
                             </div>
                             <div class="project-detail__link">
                                 <button type="button">
-                                    사용 스킬
-                                    <img src="img/ico_link.png" alt="">
-                                </button>
-                                <button type="button">
                                     Git Hub
-                                    <img src="img/ico_link.png" alt="">
-                                </button>
-                                <button type="button">
-                                    작업일지
                                     <img src="img/ico_link.png" alt="">
                                 </button>
                             </div>
@@ -428,7 +414,7 @@
             </div>
         </section>
 
-        <section class="contact light-section">
+        <section class="contact light-section" id="contact" data-section="contact">
             <div class="inner">
                 <div class="title-area">
                     <h2>
@@ -440,23 +426,20 @@
                     </p>
                 </div>
                 <div class="contact-area">
-                    <button type="button">
+                    <button type="button" data-contact="email">
                         <img src="img/mail.png" alt="">
                         EMAIL
                     </button>
                     <span></span>
-                    <button type="button">
+                    <button type="button" data-contact="github">
                         <img src="img/github.png" alt="">
                         GITHUB
                     </button>
                     <span></span>
-                    <button type="button">
+                    <button type="button" data-contact="phone">
                         <img src="img/calling.png" alt="">
                         PHONE
                     </button>
-                </div>
-                <div class="profile-image">
-
                 </div>
             </div>
         </section>

@@ -18,6 +18,7 @@ function typing() {
 
 setTimeout(typing, 300);
 
+
 /* gnb */
 const gnb = document.querySelector('.gnb');
 const line = document.querySelector('.gnb-line');
@@ -50,32 +51,35 @@ function updateGnb(index) {
   });
 }
 
-links.forEach((link, index) => {
-  link.addEventListener('click', () => {
-    updateGnb(index);
+/* 섹션 진입 감지 → gnb 업데이트 */
+const sections = document.querySelectorAll('section[data-section]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    const section = entry.target;
+
+    // data-section과 href가 같은 link 찾기 (#aboutMe === #aboutMe)
+    const index = Array.from(links).findIndex(
+      (link) => link.getAttribute('href') === `#${section.dataset.section}`
+    );
+
+    if (index !== -1) updateGnb(index);
+
+    // light-section일 때 gnb 색상 변경
+    gnb.classList.toggle('dark', section.classList.contains('light-section'));
   });
+}, {
+  // 화면 세로 중앙선을 지나는 섹션만 감지
+  rootMargin: '-50% 0px -50% 0px',
+  threshold: 0
 });
 
-//light-section에서 gnb 색상 변경
-const lightSections = document.querySelectorAll('.light-section');
+sections.forEach((section) => sectionObserver.observe(section));
 
-lightSections.forEach((lightSection) => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        gnb.classList.add('dark');
-      } else {
-        gnb.classList.remove('dark');
-      }
-    });
-  }, {
-    threshold: 1
-  });
 
-  observer.observe(lightSection);
-})
-
-/* about-intro 크기 맞춤 */
+/* about-intro 영역 'about me' gnb 위치까지로 크기 맞춤 */
 const aboutIntro = document.querySelectorAll('.about-intro');
 
 //gnb의 about me 위치값 재사용 위하여 생성
@@ -95,6 +99,7 @@ function updateAboutIntro() {
 updateAboutIntro();
 
 window.addEventListener('resize', updateAboutIntro);
+
 
 /* journey */
 //journey-line 높이값 맞춤

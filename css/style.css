@@ -21,6 +21,8 @@
 
 html {
     font-size: 100%;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 /* 공통 */
@@ -28,6 +30,8 @@ section {
     min-height: 100vh;
     background: var(--color-primary);
     color: var(--color-offWhite);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .light-section {
@@ -488,12 +492,14 @@ header .gnb::before {
 .project {
     display: flex;
     align-items: center;
+    --project-height: clamp(500px, 75vh, 630px);
 }
 
 .project .inner {
     display: flex;
     gap: 20px;
     justify-content: space-between;
+    padding-top: 50px;
 }
 
 .project-feature {
@@ -508,8 +514,8 @@ header .gnb::before {
 }
 
 .project-feature .project-detail {
-    width: 800px;
-    height: 630px;
+    width: clamp(500px, 49vw, 800px);
+    height: var(--project-height);
     transform: translateX(-5px);
     z-index: 10;
     margin-right: 20px;
@@ -538,11 +544,13 @@ header .gnb::before {
 
 .project-detail__image img {
     width: 100%;
-    height: 100%;
+    height: clamp(280px, 45vh, 380px);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .project-detail__title {
-    font-size: 45px;
+    font-size: clamp(2rem, 2.8vw, 2.8125rem);
     font-weight: 700;
     font-family: var(--font-sub);
 }
@@ -553,28 +561,28 @@ header .gnb::before {
 
 .project-detail__link {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
 }
 
 .project-detail__link button {
-    width: 220px;
-    height: 50px;
+    width: 150px;
+    height: 35px;
     background: var(--color-offWhite);
     border-radius: 20px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
     justify-content: center;
 }
 
 .project-detail__link button img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 }
 
 .project-list {
     flex: 1;
-    height: 630px;
+    height: var(--project-height);
     overflow-y: auto;
     scrollbar-width: none;
     border-radius: 10px;
@@ -592,9 +600,10 @@ header .gnb::before {
     justify-content: space-between;
     padding-inline: 30px;
     width: 100%;
-    height: 250px;
+    height: clamp(200px, 30vh, 250px);
     border-radius: 10px;
     background: var(--color-accent);
+
 }
 
 .project-list .project-list__item.active {
@@ -625,8 +634,9 @@ header .gnb::before {
 }
 
 .project-list__image {
-    width: 350px;
-    height: 200px;
+    width: 60%;
+    height: clamp(120px, 20vh, 200px);
+    /* 디바이스(화면 높이)에 따라 변함 */
     border-radius: 10px;
     overflow: hidden;
 }
@@ -636,6 +646,7 @@ header .gnb::before {
     height: 100%;
 }
 
+/* contact */
 .contact {
     background: url(../img/contact_background.png) no-repeat center/cover;
     display: flex;
@@ -700,11 +711,17 @@ header .gnb::before {
     background: var(--color-primary);
 }
 
-.contact .profile-image {
-    position: absolute;
-    width: 480px;
-    height: 600px;
-    bottom: 0;
-    right: 0;
-    background: #fff;
+/* 노트북 (1025px ~ 1440px) */
+@media (min-width: 1025px) and (max-width: 1600px) {
+    .project-list__type {
+        font-size: 14px;
+    }
+
+    .project-list__title {
+        font-size: 26px;
+    }
+
+    .contact .inner {
+        padding-block: 90px 50px;
+    }
 }
