@@ -7,6 +7,7 @@
     <title>오희정 프론트엔드 포트폴리오</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-mobile.css" media="(max-width: 768px)">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js" defer></script>
@@ -40,7 +41,7 @@
             <div class="inner">
                 <div class="about-intro">
                     <h2 class="about-title">
-                        ABOUT<br>ME
+                        ABOUT <br>ME
                     </h2>
                     <span class="about-line"></span>
                     <p class="about-desc">
@@ -181,7 +182,7 @@
             <div class="inner">
                 <div class="about-intro">
                     <h2 class="about-title">
-                        ABOUT<br>ME
+                        ABOUT <br>ME
                     </h2>
                     <span class="about-line"></span>
                     <p class="about-desc">
@@ -301,14 +302,15 @@
                                 </p>
                             </div>
                             <div class="project-detail__link">
-                                <button type="button">
+                                <a href="https://github.com/Ohhuijeong/MOONYZ.git" target="_blank">
                                     Git Hub
                                     <img src="img/ico_link.png" alt="">
-                                </button>
-                                <button type="button">
+                                </a>
+                                <a href="https://app.notion.com/p/MOONYZ-TEAM-PROJECT-41c2065ff5b180199489ebeb1fad55ae?source=copy_link"
+                                    target="_blank">
                                     작업일지
                                     <img src="img/ico_link.png" alt="">
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="project-detail__item" data-project="privon">
@@ -328,15 +330,10 @@
                                 </p>
                             </div>
                             <div class="project-detail__link">
-                                </button>
-                                <button type="button">
+                                <a href="https://github.com/Ohhuijeong/PRIV-ON.git" target="_blank">
                                     Git Hub
                                     <img src="img/ico_link.png" alt="">
-                                </button>
-                                <button type="button">
-                                    작업일지
-                                    <img src="img/ico_link.png" alt="">
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="project-detail__item" data-project="toonbox">
@@ -354,10 +351,10 @@
                                 </p>
                             </div>
                             <div class="project-detail__link">
-                                <button type="button">
+                                <a href="https://github.com/Ohhuijeong/TOONBOX.git" target="_blank">
                                     Git Hub
                                     <img src="img/ico_link.png" alt="">
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -422,24 +419,56 @@
                         <span class="contact-title">LET'S CREATE BETTER WEB</span>
                     </h2>
                     <p class="contact-desc">
-                        사용자의 경험을 생각하고, 디자인과 기능을 자연스럽게 연결합니다.<br>함께 더 나은 웹을 만들어 가고 싶습니다.
+                        사용자의 경험을 생각하고, 디자인과 기능을 자연스럽게 연결합니다. <br>함께 더 나은 웹을 만들어 가고 싶습니다.
                     </p>
                 </div>
                 <div class="contact-area">
-                    <button type="button" data-contact="email">
-                        <img src="img/mail.png" alt="">
-                        EMAIL
-                    </button>
+                    <div class="contact-item">
+                        <button type="button" class="contact-btn" data-contact="email" aria-expanded="false"
+                            aria-controls="bubbleEmail">
+                            <img src="img/mail.png" alt="">
+                            EMAIL
+                        </button>
+                        <div class="contact-bubble" id="bubbleEmail">
+                            <p class="bubble-text">okclass5@gmail.com</p>
+                            <div class="bubble-actions">
+                                <a class="bubble-link" href="mailto:okclass5@gmail.com">메일 보내기</a>
+                                <button type="button" class="bubble-copy" data-copy="okclass5@gmail.com">복사</button>
+                            </div>
+                        </div>
+                    </div>
                     <span></span>
-                    <button type="button" data-contact="github">
-                        <img src="img/github.png" alt="">
-                        GITHUB
-                    </button>
+                    <div class="contact-item">
+                        <button type="button" class="contact-btn" data-contact="github" aria-expanded="false"
+                            aria-controls="bubbleGithub">
+                            <img src="img/github.png" alt="">
+                            GITHUB
+                        </button>
+                        <div class="contact-bubble" id="bubbleGithub">
+                            <p class="bubble-text">github.com/Ohhuijeong</p>
+                            <div class="bubble-actions">
+                                <a class="bubble-link" href="https://github.com/Ohhuijeong" target="_blank"
+                                    rel="noopener noreferrer">GitHub 열기</a>
+                                <button type="button" class="bubble-copy"
+                                    data-copy="https://github.com/Ohhuijeong">복사</button>
+                            </div>
+                        </div>
+                    </div>
                     <span></span>
-                    <button type="button" data-contact="phone">
-                        <img src="img/calling.png" alt="">
-                        PHONE
-                    </button>
+                    <div class="contact-item">
+                        <button type="button" class="contact-btn" data-contact="phone" aria-expanded="false"
+                            aria-controls="bubblePhone">
+                            <img src="img/calling.png" alt="">
+                            PHONE
+                        </button>
+                        <div class="contact-bubble" id="bubblePhone">
+                            <p class="bubble-text">010-6687-3569</p>
+                            <div class="bubble-actions">
+                                <a class="bubble-link" href="tel:01066873569">전화 걸기</a>
+                                <button type="button" class="bubble-copy" data-copy="010-6687-3569">복사</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

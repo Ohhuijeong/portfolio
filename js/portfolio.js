@@ -182,3 +182,106 @@ projectItems.forEach((item) => {
     });
   });
 });
+
+
+/* contact 말풍선 */
+const contactItems = document.querySelectorAll('.contact-item');
+const BUBBLE_MARGIN = 12; // 화면 가장자리와 말풍선 사이 최소 여백
+
+// 모든 말풍선 닫기
+function closeContactBubbles() {
+  contactItems.forEach((item) => {
+    item.classList.remove('is-open');
+    item.querySelector('.contact-btn').setAttribute('aria-expanded', 'false');
+  });
+}
+
+// 말풍선이 화면 밖으로 나가지 않도록 가로 위치 보정 (--shift)
+function adjustBubble(bubble) {
+  bubble.style.setProperty('--shift', '0px');
+
+  const rect = bubble.getBoundingClientRect();
+  const viewportWidth = document.documentElement.clientWidth;
+  let shift = 0;
+
+  if (rect.left < BUBBLE_MARGIN) {
+    shift = BUBBLE_MARGIN - rect.left;
+  } else if (rect.right > viewportWidth - BUBBLE_MARGIN) {
+    shift = viewportWidth - BUBBLE_MARGIN - rect.right;
+  }
+
+  bubble.style.setProperty('--shift', `${shift}px`);
+}
+
+// 버튼 클릭 시 해당 말풍선만 열기 (다시 누르면 닫힘)
+contactItems.forEach((item) => {
+  const button = item.querySelector('.contact-btn');
+  const bubble = item.querySelector('.contact-bubble');
+
+  button.addEventListener('click', () => {
+    const isOpen = item.classList.contains('is-open');
+
+    closeContactBubbles();
+
+    if (!isOpen) {
+      item.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+      adjustBubble(bubble);
+    }
+  });
+});
+
+// 바깥 클릭 / ESC 로 닫기
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.contact-item')) closeContactBubbles();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeContactBubbles();
+});
+
+// 화면 크기가 바뀌면 열려 있는 말풍선 위치 다시 계산
+window.addEventListener('resize', () => {
+  const openBubble = document.querySelector('.contact-item.is-open .contact-bubble');
+
+  if (openBubble) adjustBubble(openBubble);
+});
+
+// 복사 버튼
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // clipboard API를 쓸 수 없는 환경 대비
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch (e) {
+      ok = false;
+    }
+
+    textarea.remove();
+    return ok;
+  }
+}
+
+document.querySelectorAll('.bubble-copy').forEach((copyBtn) => {
+  copyBtn.addEventListener('click', async () => {
+    const ok = await copyText(copyBtn.dataset.copy);
+
+    copyBtn.textContent = ok ? '복사됨!' : '복사 실패';
+
+    clearTimeout(copyBtn.resetTimer);
+    copyBtn.resetTimer = setTimeout(() => {
+      copyBtn.textContent = '복사';
+    }, 1500);
+  });
+});

@@ -1,0 +1,518 @@
+@charset "utf-8";
+
+/* =========================================================
+   MOBILE (max-width: 768px)
+   - HTML link: <link rel="stylesheet" href="css/style-m.css" media="(max-width: 768px)">
+   - style.css 뒤에 로드되므로 같은 선택자로 덮어씁니다.
+   ========================================================= */
+
+html {
+    /* 모바일은 섹션 높이가 100vh를 넘을 수 있어 mandatory 해제 */
+    scroll-snap-type: y proximity;
+}
+
+body {
+    word-break: keep-all;
+}
+
+/* 공통 */
+section {
+    min-height: 100vh;
+    min-height: 100svh;
+    scroll-snap-stop: normal;
+}
+
+:root {
+    /* 모든 섹션 h2 높이 기준 (line-height: 1 이므로 높이 = font-size) */
+    --h2-size: clamp(3rem, 15vw, 4rem);
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+.inner {
+    width: 90%;
+}
+
+/* intro */
+.intro .typing {
+    gap: 12px;
+    font-size: clamp(2.75rem, 14vw, 4rem);
+}
+
+.typing #typingText {
+    padding-left: 0;
+}
+
+.typing .cursor {
+    width: 4px;
+    height: clamp(2.25rem, 11vw, 3.25rem);
+}
+
+/* header */
+header {
+    height: 60px;
+}
+
+header .gnb {
+    height: 30px;
+}
+
+header .gnb::before,
+.gnb .gnb-line {
+    height: 4px;
+}
+
+.gnb ul li a {
+    font-size: 12px;
+    letter-spacing: -0.2px;
+}
+
+/* about 공통 */
+.about {
+    align-items: center;
+    padding-block: 80px 40px;
+}
+
+.about>.inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 50px;
+    transform: none;
+}
+
+/* about-intro: JS가 inline width를 넣으므로 !important 필요 */
+.about-intro {
+    width: 100% !important;
+    gap: 16px;
+}
+
+.about-intro .about-title br {
+    display: none;
+}
+
+.about-intro .about-desc {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.about-intro .about-desc br {
+    display: none;
+}
+
+
+/* journey */
+.journey {
+    flex: none;
+    height: auto;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.journey-nav {
+    height: auto;
+}
+
+.journey-nav h3 {
+    padding-left: 5px;
+    margin-bottom: 24px;
+}
+
+.journey-nav .nav-area {
+    flex: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-inline: 3%;
+}
+
+.nav-area .journey-line,
+.journey-item .item-shape {
+    display: none;
+}
+
+.journey .journey-item {
+    min-width: 0;
+    padding-left: 0;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+.journey .journey-item:first-of-type {
+    justify-self: start;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.journey .journey-item:last-of-type {
+    justify-self: end;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.journey-item .item-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.journey-item .item-title {
+    display: none;
+}
+
+.journey-item .item-desc {
+    display: none;
+}
+
+/* journey detail 카드 */
+.detail-area .journey-detail {
+    width: 100%;
+    height: auto;
+    min-height: 340px;
+    padding: 22px 20px;
+    gap: 22px;
+}
+
+.journey-detail__content {
+    gap: 14px;
+}
+
+.journey-detail__content .detail-title {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.journey-detail__content .detail-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.journey-detail__content .detail-desc br {
+    display: none;
+}
+
+.journey-detail__skills .skills-label {
+    margin-bottom: 15px;
+}
+
+.journey-detail__skills .skills-area {
+    gap: 8px;
+}
+
+.skills-area span {
+    padding: 5px 12px;
+    font-size: 12px;
+}
+
+/* about-bottom - swiper */
+.about-bottom .infoSwiper {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    padding-block: 10px 30px;
+}
+
+.infoSwiper .swiper-slide {
+    height: auto;
+    min-height: 380px;
+    margin-bottom: 30px;
+}
+
+.info-content .info-name {
+    font-size: 1.25rem;
+}
+
+.about-bottom .infoSwiper .swiper-button-prev {
+    left: 20%;
+}
+
+.about-bottom .infoSwiper .swiper-button-next {
+    right: 20%;
+}
+
+/* slide01 */
+.infoSwiper .slide01 .info-item {
+    gap: 16px;
+    padding-bottom: 30px;
+}
+
+.slide01 .info-item:nth-child(2) {
+    padding-bottom: 0;
+}
+
+.slide01 .info-item:first-child {
+    margin-bottom: 10px;
+}
+
+.slide01 .info-content .info-org {
+    font-size: 0.9375rem;
+    margin-top: 6px;
+}
+
+/* 날짜: absolute → 일반 흐름 (긴 제목과 겹침 방지) */
+.slide01 .info-item .info-date,
+.slide01 .info-item:nth-child(2) .info-date {
+    position: static;
+    font-size: 0.875rem;
+}
+
+/* slide02 */
+.slide02 .info-content {
+    gap: 40px;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.info-content li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.info-content li .info-name {
+    width: auto;
+}
+
+.info-content li .program-list {
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+
+.program-list span {
+    font-size: 1rem;
+}
+
+/* project */
+.project {
+    align-items: flex-start;
+    padding-block: 90px 60px;
+    --project-height: auto;
+}
+
+.project .inner {
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 20px;
+}
+
+.project-feature {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.project-feature {
+    /* project h2만 다른 섹션 h2보다 5% 작게 */
+    --project-h2-size: calc(var(--h2-size) * 0.95);
+}
+
+.project-feature h2 {
+    position: relative;
+    z-index: 5;
+    height: var(--project-h2-size);
+    margin-bottom: -28px;
+}
+
+.project-feature h2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: var(--project-h2-size);
+    height: auto;
+    max-width: none;
+    transform-origin: top left;
+    transform: rotate(90deg) translateY(-100%);
+}
+
+.project-feature::after {
+    display: none;
+}
+
+.project-feature .project-detail {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    transform: none;
+}
+
+.project-detail__item {
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-detail__image {
+    height: auto;
+}
+
+.project-detail__image img {
+    display: block;
+    height: clamp(170px, 50vw, 280px);
+    object-fit: cover;
+    object-position: top;
+}
+
+.project-detail__title {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.project-detail__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+.project-detail__link {
+    gap: 10px;
+}
+
+.project-detail__link a {
+    width: 130px;
+    font-size: 14px;
+}
+
+.project-list {
+    flex: none;
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+}
+
+.project-list ul {
+    flex-direction: row;
+    gap: 12px;
+}
+
+.project-list ul li {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+}
+
+.project-list .project-list__item {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+    height: auto;
+    padding: 18px;
+}
+
+.project-list__type {
+    font-size: 12px;
+}
+
+.project-list__title {
+    font-size: 22px;
+}
+
+.project-list__image {
+    width: 100%;
+    height: 110px;
+}
+
+.project-list__image img {
+    object-fit: cover;
+    object-position: top;
+}
+
+/* contact */
+.contact {
+    align-items: flex-start;
+}
+
+.contact .inner {
+    height: auto;
+    min-height: 100svh;
+    padding-block: 110px 60px;
+    gap: 50px;
+    justify-content: center;
+}
+
+.contact h2 {
+    height: auto;
+    min-height: 220px;
+    margin-bottom: 20px;
+}
+
+.contact h2 .contact-bg-title {
+    font-size: clamp(3rem, 17vw, 4.5rem);
+}
+
+.contact h2 .contact-title {
+    font-size: var(--h2-size);
+    line-height: 1;
+}
+
+.contact .contact-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.contact .contact-desc br {
+    display: none;
+}
+
+.contact-area {
+    justify-content: center;
+    gap: 30px;
+}
+
+.contact-item>button {
+    height: 90px;
+    gap: 14px;
+    font-size: 14px;
+}
+
+.contact-item>button img {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-area>span {
+    height: 90px;
+}
+
+/* contact 말풍선 */
+.contact-bubble {
+    bottom: calc(100% + 14px);
+    padding: 14px 16px;
+}
+
+.bubble-text {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.bubble-link,
+.bubble-copy {
+    height: 30px;
+    padding-inline: 14px;
+    font-size: 13px;
+}
+
+/* 작은 모바일 (480px 이하) */
+@media (max-width: 480px) {
+    .gnb ul li a {
+        font-size: 11px;
+    }
+
+    .detail-area .journey-detail {
+        min-height: 320px;
+        padding: 20px 18px;
+    }
+
+    .project-list ul li {
+        flex-basis: 220px;
+    }
+}
